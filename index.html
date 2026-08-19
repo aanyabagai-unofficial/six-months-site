@@ -1,0 +1,2668 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>a little something ♡</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    background-color: #f8dfe8;
+
+    background-image:
+        linear-gradient(45deg, #f3d3df 25%, transparent 25%),
+        linear-gradient(-45deg, #f3d3df 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #f3d3df 75%),
+        linear-gradient(-45deg, transparent 75%, #f3d3df 75%);
+
+    background-size: 50px 50px;
+    background-position:
+        0 0,
+        0 25px,
+        25px -25px,
+        -25px 0;
+
+    font-family: Arial, sans-serif;
+
+    color: #713447;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.window {
+    width: min(800px, 95vw);
+
+    background: #fffafa;
+
+    border: 3px solid #df9db2;
+
+    border-radius: 22px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 20px 60px rgba(90, 40, 60, 0.2);
+}
+
+.window-bar {
+
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 20px;
+
+    background: #f5bdce;
+
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.dots {
+    display: flex;
+    gap: 8px;
+}
+
+.dots span {
+
+    width: 11px;
+    height: 11px;
+
+    border-radius: 50%;
+
+    background: #d9859e;
+}
+
+.content {
+
+    padding: 55px 30px;
+
+    text-align: center;
+}
+
+.heart {
+
+    font-size: 70px;
+
+    color: #e24f78;
+}
+
+.tiny {
+
+    margin-top: 20px;
+
+    font-size: 12px;
+
+    letter-spacing: 4px;
+
+    font-weight: bold;
+
+    color: #c2778e;
+}
+
+h1 {
+
+    margin: 18px 0;
+
+    font-family: Georgia, serif;
+
+    font-size: clamp(32px, 6vw, 55px);
+
+    line-height: 1.1;
+}
+
+h1 span {
+    color: #e24f78;
+}
+
+.message {
+
+    color: #805266;
+
+    font-size: 17px;
+
+    line-height: 1.7;
+}
+
+.buttons {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 18px;
+
+    margin-top: 30px;
+}
+
+button {
+
+    border: none;
+
+    cursor: pointer;
+
+    font: inherit;
+}
+
+.main-button {
+
+    padding: 15px 35px;
+
+    border-radius: 999px;
+
+    background: #e24f78;
+
+    color: white;
+
+    font-weight: bold;
+
+    font-size: 16px;
+
+    box-shadow:
+        0 8px 20px rgba(226, 79, 120, 0.25);
+
+    transition: 0.2s;
+}
+
+.main-button:hover {
+
+    transform: translateY(-2px);
+
+}
+
+.no-button {
+
+    padding: 15px 30px;
+
+    border-radius: 999px;
+
+    background: white;
+
+    color: #8b5368;
+
+    border: 2px solid #dfa3b5;
+
+}
+
+
+
+.answer-button {
+
+    display:block;
+
+    width:min(600px, 100%);
+
+    margin:10px auto;
+
+    padding:14px 18px;
+
+    border-radius:12px;
+
+    border:2px solid #ecc3cf;
+
+    background:white;
+
+    color:#713447;
+
+    text-align:left;
+
+    font-size:14px;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.answer-button:hover:not(:disabled) {
+
+    background:#fff0f4;
+
+    transform:translateX(3px);
+
+}
+
+.answer-button:disabled {
+    cursor:default;
+}
+
+.answer-correct {
+
+    background:#dff5e7 !important;
+
+    border-color:#75bd91 !important;
+
+    color:#356b48 !important;
+
+}
+
+.answer-wrong {
+
+    background:#f8d9df !important;
+
+    border-color:#d9798d !important;
+
+    color:#943f56 !important;
+
+}
+
+.quiz-shake {
+
+    animation:quizShake .4s;
+
+}
+
+@keyframes quizShake {
+
+    0%,100% {
+        transform:translateX(0);
+    }
+
+    25% {
+        transform:translateX(-7px);
+    }
+
+    75% {
+        transform:translateX(7px);
+    }
+
+}
+
+
+
+
+/* MEMORY LANE */
+
+.memory-card {
+
+    margin: 25px 0;
+
+    padding: 22px;
+
+    background: #fff3f7;
+
+    border: 2px solid #edbfd0;
+
+    border-radius: 18px;
+
+    text-align: left;
+
+    color: #714354;
+
+    line-height: 1.6;
+
+}
+
+.memory-card h2 {
+
+    margin-top: 5px;
+
+    color: #713447;
+
+    font-family: Georgia, serif;
+
+}
+
+.memory-card p {
+
+    font-size: 14px;
+
+}
+
+.memory-card li {
+
+    margin: 7px 0;
+
+    font-size: 14px;
+
+}
+
+.memory-number {
+
+    color: #c27a90 !important;
+
+    font-size: 10px !important;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+}
+
+.memory-caption {
+
+    color: #df5279 !important;
+
+    font-weight: bold;
+
+}
+
+.quote {
+
+    padding: 12px 15px;
+
+    margin: 15px 0;
+
+    background: white;
+
+    border-left: 4px solid #e6537b;
+
+    border-radius: 8px;
+
+    color: #855264 !important;
+
+    font-style: italic;
+
+}
+
+.memory-ending {
+
+    padding: 25px 10px 10px;
+
+    text-align: center;
+
+}
+
+.memory-ending h2 {
+
+    color: #df5279;
+
+    font-family: Georgia, serif;
+
+    font-size: 28px;
+
+}
+
+
+
+/* ============================================================
+   SCREEN 5 — LETTER
+============================================================ */
+
+.letter-content {
+    padding-bottom: 45px;
+}
+
+.language-joke {
+    color: #a65c73;
+    font-size: 12px;
+    line-height: 1.7;
+    margin: 8px 0 25px;
+}
+
+.letter-card {
+    margin: 25px 0;
+
+    padding: 28px 24px;
+
+    background: #fff8fa;
+
+    border: 2px solid #edbfd0;
+
+    border-radius: 20px;
+
+    text-align: left;
+
+    color: #714354;
+
+    line-height: 1.75;
+
+    box-shadow: 0 5px 15px rgba(190, 110, 135, 0.08);
+}
+
+.letter-card h2 {
+    margin-top: 0;
+    margin-bottom: 25px;
+
+    color: #713447;
+
+    font-family: Georgia, serif;
+
+    font-size: 25px;
+}
+
+.letter-card p {
+    font-size: 14px;
+
+    margin: 18px 0;
+}
+
+.letter-card strong {
+    color: #713447;
+}
+
+.emphasis-paragraph {
+    text-align: center;
+
+    color: #713447;
+
+    font-family: Georgia, serif;
+
+    font-size: 16px !important;
+
+    margin: 30px 5px !important;
+}
+
+.aside {
+    color: #a96a7d;
+
+    font-size: 12px;
+
+    font-style: italic;
+}
+
+.aside-big {
+    color: #df5279 !important;
+
+    font-size: 15px !important;
+
+    font-weight: bold;
+
+    text-align: center;
+}
+
+.letter-divider {
+    text-align: center;
+
+    color: #df5279;
+
+    font-size: 25px;
+
+    margin: 35px 0;
+}
+
+.final-line {
+    text-align: center;
+
+    color: #713447;
+
+    font-family: Georgia, serif;
+
+    font-size: 17px !important;
+
+    line-height: 1.9 !important;
+
+    margin-top: 30px !important;
+}
+
+.signature {
+    text-align: right;
+
+    color: #c27a90;
+
+    font-family: Georgia, serif;
+
+    font-size: 16px !important;
+
+    margin-top: 35px !important;
+}
+
+.final-love {
+    text-align: center;
+
+    color: #df5279;
+
+    font-family: Georgia, serif;
+
+    font-size: 24px;
+
+    padding: 25px 0 15px;
+}
+
+
+/* ============================================================
+   SCREEN 5 — LETTER
+============================================================ */
+
+.letter-content {
+    padding-bottom: 45px;
+}
+
+.language-joke {
+    color: #a65c73;
+    font-size: 12px;
+    line-height: 1.7;
+    margin: 8px 0 25px;
+}
+
+.letter-card {
+    margin: 25px 0;
+
+    padding: 28px 24px;
+
+    background: #fff8fa;
+
+    border: 2px solid #edbfd0;
+
+    border-radius: 20px;
+
+    text-align: left;
+
+    color: #714354;
+
+    line-height: 1.75;
+
+    box-shadow: 0 5px 15px rgba(190, 110, 135, 0.08);
+}
+
+.letter-card h2 {
+    margin-top: 0;
+    margin-bottom: 25px;
+
+    color: #713447;
+
+    font-family: Georgia, serif;
+
+    font-size: 25px;
+}
+
+.letter-card p {
+    font-size: 14px;
+
+    margin: 18px 0;
+}
+
+.letter-card strong {
+    color: #713447;
+}
+
+.emphasis-paragraph {
+    text-align: center;
+
+    color: #713447;
+
+    font-family: Georgia, serif;
+
+    font-size: 16px !important;
+
+    margin: 30px 5px !important;
+}
+
+.aside {
+    color: #a96a7d;
+
+    font-size: 12px;
+
+    font-style: italic;
+}
+
+.aside-big {
+    color: #df5279 !important;
+
+    font-size: 15px !important;
+
+    font-weight: bold;
+
+    text-align: center;
+}
+
+.letter-divider {
+    text-align: center;
+
+    color: #df5279;
+
+    font-size: 25px;
+
+    margin: 35px 0;
+}
+
+.final-line {
+    text-align: center;
+
+    color: #713447;
+
+    font-family: Georgia, serif;
+
+    font-size: 17px !important;
+
+    line-height: 1.9 !important;
+
+    margin-top: 30px !important;
+}
+
+.signature {
+    text-align: right;
+
+    color: #c27a90;
+
+    font-family: Georgia, serif;
+
+    font-size: 16px !important;
+
+    margin-top: 35px !important;
+}
+
+.final-love {
+    text-align: center;
+
+    color: #df5279;
+
+    font-family: Georgia, serif;
+
+    font-size: 24px;
+
+    padding: 25px 0 15px;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     SCREEN 1
+===================================================== -->
+
+<div class="window" id="screen1">
+
+    <div class="window-bar">
+
+        <div>
+            💌 a little something
+        </div>
+
+        <div class="dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+    </div>
+
+
+    <div class="content">
+
+        <div class="heart">
+            ♥
+        </div>
+
+        <div class="tiny">
+            IMPORTANT QUESTION
+        </div>
+
+        <h1>
+            Ready to celebrate<br>
+            <span>6 months of us?</span> ♡
+        </h1>
+
+        <p class="message">
+            I made this little corner of the internet
+            <br>
+            just for you.
+        </p>
+
+
+        <div class="buttons">
+
+            <button
+                class="main-button"
+                onclick="showScreen(2)"
+            >
+                YES ♡
+            </button>
+
+
+            <button
+                class="no-button"
+                id="noButton"
+            >
+                NO
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     SCREEN 2
+===================================================== -->
+
+<div class="window hidden" id="screen2">
+
+    <div class="window-bar">
+
+        <div>
+            💌 okay then...
+        </div>
+
+        <div class="dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+    </div>
+
+
+    <div class="content">
+
+        <div class="heart">
+            ♡
+        </div>
+
+        <div class="tiny">
+            GOOD ANSWER
+        </div>
+
+        <h1>
+            Okay, you can<br>
+            <span>come in.</span> ♡
+        </h1>
+
+        <p class="message">
+
+            But before you continue...
+
+            <br><br>
+
+            I have a few things I want to ask you.
+
+        </p>
+
+
+        <button
+            class="main-button"
+            onclick="showScreen(3)"
+        >
+            I'm ready ♡
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     SCREEN 3
+===================================================== -->
+
+<div class="window hidden" id="screen3">
+
+    <div class="window-bar">
+
+        <div>
+            📝 boyfriend pop quiz
+        </div>
+
+        <div class="dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+    </div>
+
+
+    <div class="content">
+
+        <div class="heart">
+            ♡
+        </div>
+
+        <div class="tiny">
+            POP QUIZ
+        </div>
+
+        <h1>
+            Heyyy white boy,
+            <br>
+            <span>ready for a pop quiz? ;)</span>
+        </h1>
+
+        <p class="message">
+
+            dw, I won't bite..
+
+            <br>
+
+            unless you want me to
+
+        </p>
+
+
+        
+<div id="quizStart">
+
+    <button
+        class="main-button"
+        onclick="beginQuiz()"
+    >
+        I'm ready ♡
+    </button>
+
+</div>
+
+
+<div id="quizBox" class="hidden">
+
+    <div
+        style="
+            display:inline-block;
+            padding:8px 15px;
+            background:#fff0f4;
+            border:1px solid #edc3d0;
+            border-radius:999px;
+            font-size:13px;
+            font-weight:bold;
+            margin-bottom:20px;
+        "
+    >
+        boyfriend points:
+        <span id="score">0</span> 🎉
+    </div>
+
+
+    <p
+        class="tiny"
+        id="questionNumber"
+    >
+        QUESTION 1 OF 5
+    </p>
+
+
+    <h1 id="questionTitle"></h1>
+
+
+    <p
+        class="message"
+        id="questionHint"
+    >
+        Not bad, white boi... I'm proud of you 🥹
+    </p>
+
+
+    <div id="answers"></div>
+
+
+    <p
+        id="quizResponse"
+        style="
+            min-height:55px;
+            font-weight:bold;
+            line-height:1.6;
+        "
+    ></p>
+
+
+    <button
+        class="main-button hidden"
+        id="nextQuestion"
+        onclick="nextQuestion()"
+    >
+        Next question ♡
+    </button>
+
+</div>
+
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+/* =====================================================
+   SCREEN NAVIGATION
+===================================================== */
+
+function showScreen(number) {
+
+    document
+        .querySelectorAll(".window")
+        .forEach(function(screen) {
+
+            screen.classList.add("hidden");
+
+        });
+
+
+    document
+        .getElementById("screen" + number)
+        .classList.remove("hidden");
+
+}
+
+
+
+
+
+/* =====================================================
+   NO BUTTON
+===================================================== */
+
+const noButton =
+    document.getElementById("noButton");
+
+noButton.addEventListener(
+    "mouseenter",
+    function() {
+
+        const x =
+            Math.random() * 180 - 90;
+
+        const y =
+            Math.random() * 100 - 50;
+
+        noButton.style.transform =
+            `translate(${x}px, ${y}px)`;
+
+    }
+);
+
+
+
+/* ============================================================
+   BOYFRIEND QUIZ
+============================================================ */
+
+let boyfriendScore = 0;
+
+let currentQuestionIndex = 0;
+
+
+const questions = [
+
+    {
+        question:
+            "When did we first start dating?",
+
+        answers: [
+            "18th April",
+            "20th April",
+            "23rd April",
+            "27th April"
+        ],
+
+        correct:
+            "20th April"
+    },
+
+
+    {
+        question:
+            "What's my favourite thing about you?",
+
+        answers: [
+            "eyes",
+            "laugh",
+            "dih 🥀",
+            "all of the above"
+        ],
+
+        correct:
+            "all of the above"
+    },
+
+
+    {
+        question:
+            "What's my favourite nickname to use for you?",
+
+        answers: [
+            "Jayyy (yes with the extra y's)",
+            "baby/babe",
+            "daddy",
+            "white boi",
+            "my love",
+            "sweetheart",
+            "darling",
+            "good boyyy"
+        ],
+
+        allCorrect:
+            true
+    },
+
+
+    {
+        question:
+            "When is my birthday?",
+
+        answers: [
+            "24th May",
+            "27th May",
+            "29th May",
+            "2nd June"
+        ],
+
+        correct:
+            "29th May"
+    },
+
+
+    {
+        question:
+            "After six months, do you know what I still want?",
+
+        answers: [
+            "You",
+            "You",
+            "You",
+            "Did you really think there was another answer?"
+        ],
+
+        allCorrect:
+            true
+    }
+
+];
+
+
+
+/* ============================================================
+   PERSONAL JUDGMENTS
+   These appear after he chooses an answer.
+   ============================================================ */
+
+const answerJudgements = [
+    "Not bad, white boi... I'm proud of you 🥹",
+    "Okayyy, you actually remember this one. 👀",
+    "Interesting choice... I'll allow it. ♡",
+    "Look at you knowing things about me. 🥹",
+    "You really thought there was another answer? 😭"
+];
+
+
+const correctMessages = [
+    "+1 boyfriend point 🎉<br>That's my boy ♡ I love you.",
+    "+1 boyfriend point 🎉<br>Good job, white boi. I love you <3",
+    "+1 boyfriend point 🎉<br>I love you, Jaydon <3",
+    "+1 boyfriend point 🎉<br>Correctttt. You actually know me ♡",
+    "+1 boyfriend point 🎉<br>Look at you getting them right 🥹"
+];
+
+
+const wrongMessages = [
+
+    "-1 boyfriend point 🥀<br>thought you knew me better than that",
+
+    "-1 boyfriend point 🥀<br>I'm very disappointed in you, white boi.",
+
+    "-1 boyfriend point 🥀<br>HELLO???? We've been dating for SIX MONTHS 😭",
+
+    "-1 boyfriend point 🥀<br>that's crazy. actually crazy.",
+
+    "-1 boyfriend point 🥀<br>I'm reconsidering your boyfriend application."
+
+];
+
+
+function randomMessage(array) {
+
+    return array[
+        Math.floor(
+            Math.random() * array.length
+        )
+    ];
+
+}
+
+
+/* ============================================================
+   SOUND
+============================================================ */
+
+let audioContext = null;
+
+
+function getAudioContext() {
+
+    if (!audioContext) {
+
+        audioContext =
+            new (
+                window.AudioContext ||
+                window.webkitAudioContext
+            )();
+
+    }
+
+    return audioContext;
+
+}
+
+
+function correctSound() {
+
+    const ctx =
+        getAudioContext();
+
+    const oscillator =
+        ctx.createOscillator();
+
+    const gain =
+        ctx.createGain();
+
+
+    oscillator.type = "sine";
+
+    oscillator.frequency.setValueAtTime(
+        650,
+        ctx.currentTime
+    );
+
+    oscillator.frequency.exponentialRampToValueAtTime(
+        1000,
+        ctx.currentTime + .15
+    );
+
+
+    gain.gain.setValueAtTime(
+        .15,
+        ctx.currentTime
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+        .001,
+        ctx.currentTime + .35
+    );
+
+
+    oscillator.connect(gain);
+
+    gain.connect(ctx.destination);
+
+    oscillator.start();
+
+    oscillator.stop(
+        ctx.currentTime + .35
+    );
+
+}
+
+
+function wrongSound() {
+
+    const ctx =
+        getAudioContext();
+
+    const oscillator =
+        ctx.createOscillator();
+
+    const gain =
+        ctx.createGain();
+
+
+    oscillator.type = "square";
+
+    oscillator.frequency.setValueAtTime(
+        180,
+        ctx.currentTime
+    );
+
+
+    gain.gain.setValueAtTime(
+        .15,
+        ctx.currentTime
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+        .001,
+        ctx.currentTime + .45
+    );
+
+
+    oscillator.connect(gain);
+
+    gain.connect(ctx.destination);
+
+    oscillator.start();
+
+    oscillator.stop(
+        ctx.currentTime + .45
+    );
+
+}
+
+
+/* ============================================================
+   START QUIZ
+============================================================ */
+
+function beginQuiz() {
+
+    document
+        .getElementById("quizStart")
+        .classList.add("hidden");
+
+    document
+        .getElementById("quizBox")
+        .classList.remove("hidden");
+
+    boyfriendScore = 0;
+
+    currentQuestionIndex = 0;
+
+    document
+        .getElementById("score")
+        .innerText = boyfriendScore;
+
+    loadQuestion();
+
+}
+
+
+/* ============================================================
+   LOAD QUESTION
+============================================================ */
+
+function loadQuestion() {
+
+    // Clear question judgment
+    const questionHint =
+        document.getElementById("questionHint");
+
+    if (questionHint) {
+        questionHint.innerHTML = "";
+    }
+
+    // Clear previous question feedback
+    const quizResponse =
+        document.getElementById("quizResponse");
+
+    if (quizResponse) {
+        quizResponse.innerHTML = "";
+        quizResponse.classList.remove("hidden");
+    }
+
+
+
+    const question =
+        questions[currentQuestionIndex];
+
+
+    document
+        .getElementById("questionNumber")
+        .innerText =
+        "QUESTION " +
+        (currentQuestionIndex + 1) +
+        " OF " +
+        questions.length;
+
+
+    document
+        .getElementById("questionTitle")
+        .innerText =
+        question.question;
+
+
+    document
+        .getElementById("quizResponse")
+        .innerHTML = "";
+
+
+    document
+        .getElementById("nextQuestion")
+        .classList.add("hidden");
+
+
+    const answersContainer =
+        document.getElementById("answers");
+
+
+    answersContainer.innerHTML = "";
+
+
+    question.answers.forEach(
+        function(answer) {
+
+            const button =
+                document.createElement("button");
+
+            button.className =
+                "answer-button";
+
+            button.innerText =
+                answer;
+
+
+            button.onclick =
+                function() {
+
+                    checkAnswer(
+                        button,
+                        answer,
+                        question
+                    );
+
+                };
+
+
+            answersContainer.appendChild(
+                button
+            );
+
+        }
+    );
+
+}
+
+
+/* ============================================================
+   CHECK ANSWER
+============================================================ */
+
+function checkAnswer(
+    selectedButton,
+    selectedAnswer,
+    question
+) {
+
+    const allButtons =
+        document.querySelectorAll(
+            ".answer-button"
+        );
+
+
+    allButtons.forEach(
+        function(button) {
+
+            button.disabled = true;
+
+        }
+    );
+
+
+    let correct = false;
+
+
+    if (question.allCorrect) {
+
+        correct = true;
+
+    }
+
+    else if (
+        selectedAnswer ===
+        question.correct
+    ) {
+
+        correct = true;
+
+    }
+
+
+    // Show your personal judgment of his answer
+    const questionHint =
+        document.getElementById("questionHint");
+
+    if (questionHint) {
+        questionHint.innerHTML =
+            answerJudgements[currentQuestionIndex];
+    }
+
+
+    /* ==========================
+       CORRECT
+    ========================== */
+
+    if (correct) {
+
+        boyfriendScore++;
+
+        document
+            .getElementById("score")
+            .innerText =
+            boyfriendScore;
+
+
+        selectedButton
+            .classList
+            .add("answer-correct");
+
+
+        document
+            .getElementById("quizResponse")
+            .innerHTML =
+            correctMessages[currentQuestionIndex]
+
+
+        correctSound();
+
+    }
+
+
+    /* ==========================
+       WRONG
+    ========================== */
+
+    else {
+
+        boyfriendScore--;
+
+        document
+            .getElementById("score")
+            .innerText =
+            boyfriendScore;
+
+
+        selectedButton
+            .classList
+            .add("answer-wrong");
+
+
+        allButtons.forEach(
+            function(button) {
+
+                if (
+                    button.innerText ===
+                    question.correct
+                ) {
+
+                    button
+                        .classList
+                        .add(
+                            "answer-correct"
+                        );
+
+                }
+
+            }
+        );
+
+
+        document
+            .getElementById("quizResponse")
+            .innerHTML =
+            randomMessage(
+                wrongMessages
+            );
+
+
+        wrongSound();
+
+
+        const quizBox =
+            document.getElementById(
+                "quizBox"
+            );
+
+
+        quizBox.classList.add(
+            "quiz-shake"
+        );
+
+
+        setTimeout(
+            function() {
+
+                quizBox.classList.remove(
+                    "quiz-shake"
+                );
+
+            },
+            400
+        );
+
+    }
+
+
+    document
+        .getElementById("nextQuestion")
+        .classList.remove("hidden");
+
+}
+
+
+/* ============================================================
+   NEXT QUESTION
+============================================================ */
+
+
+function nextQuestion() {
+
+    currentQuestionIndex++;
+
+
+    if (
+        currentQuestionIndex >=
+        questions.length
+    ) {
+
+        document
+            .getElementById("questionNumber")
+            .innerText =
+            "QUIZ COMPLETE 🎉";
+
+
+        document
+            .getElementById("questionTitle")
+            .innerText =
+            "You survived. ♡";
+
+
+        document
+            .getElementById("questionHint")
+            .innerText =
+            "Not bad, white boi... I'm proud of you 🥹";
+
+
+        document
+            .getElementById("answers")
+            .innerHTML = "";
+
+
+        document
+            .getElementById("quizResponse")
+            .innerHTML =
+            "<strong>" +
+            boyfriendScore +
+            " boyfriend points 🎉</strong>" +
+            "<br><br>" +
+            "Okayyy... you did pretty well, white boi. ♡";
+
+
+        const nextButton =
+            document.getElementById(
+                "nextQuestion"
+            );
+
+
+        nextButton.innerText =
+            "Take me down memory lane ♡";
+
+
+        nextButton.classList.remove(
+            "hidden"
+        );
+
+
+        nextButton.onclick = function() {
+
+            document
+                .getElementById("screen3")
+                .classList.add("hidden");
+
+
+            document
+                .getElementById("screen4")
+                .classList.remove("hidden");
+
+
+            window.scrollTo(0, 0);
+
+        };
+
+
+        return;
+
+    }
+
+
+    loadQuestion();
+
+}
+
+
+function showMemory(number) {
+
+    const screen4 =
+        document.getElementById("screen4");
+
+    if (number === 1) {
+
+        screen4.innerHTML = `
+
+        <div class="window-bar">
+
+            <div>
+                💌 trip down memory lane
+            </div>
+
+            <div class="dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+        </div>
+
+
+        <div class="content">
+
+            <div class="tiny">
+                CHAPTER ONE
+            </div>
+
+            <h1>
+                It all started
+                <br>
+                <span>on Roblox.</span>
+            </h1>
+
+            <p class="message">
+
+                We met, became friends,
+                <br>
+                and then you invited me to play
+                <br>
+                <strong>Dusty Road.</strong>
+
+                <br><br>
+
+                Neither of us knew what the hell
+                we were doing.
+
+            </p>
+
+
+            <button
+                class="main-button"
+                onclick="showMemory(2)"
+            >
+                Tell me more ♡
+            </button>
+
+        </div>
+
+        `;
+
+    }
+
+
+    else if (number === 2) {
+
+        screen4.innerHTML = `
+
+        <div class="window-bar">
+
+            <div>
+                💌 trip down memory lane
+            </div>
+
+            <div class="dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+        </div>
+
+
+        <div class="content">
+
+            <div class="tiny">
+                CHAPTER TWO
+            </div>
+
+            <h1>
+                Dusty Road:
+                <br>
+                <span>the beginning of chaos</span>
+            </h1>
+
+            <p class="message">
+
+                Round one:
+                <br>
+                I tried to build the car.
+
+                <br><br>
+
+                My IQ said absolutely not.
+
+                <br><br>
+
+                Then there were furry villagers
+                <br>
+                and naturally I asked you
+                <br>
+                to run them over. 💀
+
+                <br><br>
+
+                We got killed by zombies.
+
+                <br><br>
+
+                <strong>
+                    Romantic.
+                </strong>
+
+            </p>
+
+
+            <button
+                class="main-button"
+                onclick="showMemory(3)"
+            >
+                Surely it gets better ♡
+            </button>
+
+        </div>
+
+        `;
+
+    }
+
+
+    else if (number === 3) {
+
+        screen4.innerHTML = `
+
+        <div class="window-bar">
+
+            <div>
+                💌 trip down memory lane
+            </div>
+
+            <div class="dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+        </div>
+
+
+        <div class="content">
+
+            <div class="tiny">
+                CHAPTER THREE
+            </div>
+
+            <h1>
+                Then came
+                <br>
+                <span>Ink Game.</span>
+            </h1>
+
+            <p class="message">
+
+                I taught you how to play.
+
+                <br><br>
+
+                I showed you the hiding spot
+                <br>
+                in the middle bunks.
+
+                <br><br>
+
+                You called me <strong>bbg</strong>.
+
+                <br><br>
+
+                I said,
+                <br>
+                <em>"anytime, love."</em>
+
+                <br><br>
+
+                And then I hit you by accident
+                while trying to save you.
+
+                <br><br>
+
+                So naturally...
+                <br>
+                <strong>
+                    I started flirting with you.
+                </strong>
+
+            </p>
+
+
+            <button
+                class="main-button"
+                onclick="showMemory(4)"
+            >
+                Continue ♡
+            </button>
+
+        </div>
+
+        `;
+
+    }
+
+
+    else if (number === 4) {
+
+        screen4.innerHTML = `
+
+        <div class="window-bar">
+
+            <div>
+                💌 trip down memory lane
+            </div>
+
+            <div class="dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+        </div>
+
+
+        <div class="content">
+
+            <div class="tiny">
+                CHAPTER FOUR
+            </div>
+
+            <h1>
+                And then you said
+                <br>
+                <span>that.</span>
+            </h1>
+
+            <p class="message">
+
+                I hit you with:
+
+                <br><br>
+
+                <em>
+                "You come here often? ;)"
+                </em>
+
+                <br><br>
+
+                And you replied:
+
+                <br><br>
+
+                <em>
+                "Yeah, a fine shot showed me this place..."
+                </em>
+
+                <br><br>
+
+                And that was basically it.
+
+                <br><br>
+
+                <strong>
+                    I was whipped.
+                </strong>
+
+                <br><br>
+
+                Absolutely finished.
+                No recovery possible.
+
+            </p>
+
+
+            <button
+                class="main-button"
+                onclick="showMemory(5)"
+            >
+                Oh no... ♡
+            </button>
+
+        </div>
+
+        `;
+
+    }
+
+
+    else if (number === 5) {
+
+        screen4.innerHTML = `
+
+        <div class="window-bar">
+
+            <div>
+                💌 trip down memory lane
+            </div>
+
+            <div class="dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+        </div>
+
+
+        <div class="content">
+
+            <div class="tiny">
+                CHAPTER FIVE
+            </div>
+
+            <h1>
+                Six months later...
+                <br>
+                <span>here we are. ♡</span>
+            </h1>
+
+            <p class="message">
+
+                Somehow, that random guy
+                <br>
+                I met on Roblox became
+                <br>
+                <strong>my person.</strong>
+
+                <br><br>
+
+                From Dusty Road disasters,
+                <br>
+                to Ink Game,
+                <br>
+                to all the flirting,
+                <br>
+                to actually falling in love...
+
+                <br><br>
+
+                I wouldn't trade
+                <br>
+                that ridiculous first day
+                <br>
+                for anything.
+
+            </p>
+
+
+            <div class="heart">
+                ♥
+            </div>
+
+            <p class="message">
+                Happy six months, white boi. ♡
+            </p>
+
+            <br>
+
+            <button class="main-button" id="memoryNextButton" onclick="goToScreen5()">
+                One last thing... ♡
+            </button>
+
+        </div>
+
+        `;
+
+    }
+
+}
+
+
+
+
+const memoryNextButton =
+    document.getElementById("memoryNextButton");
+
+if (memoryNextButton) {
+
+    memoryNextButton.onclick = function() {
+
+        
+document
+    .getElementById("screen4")
+    .classList.add("hidden");
+
+document
+    .getElementById("screen5")
+    .classList.remove("hidden");
+
+window.scrollTo(0, 0);
+
+
+    };
+
+}
+
+
+/* =========================================================
+   MEMORY LANE → FINAL LETTER
+   Uses event delegation because the button is created
+   dynamically by showMemory().
+   ========================================================= */
+
+document.addEventListener("click", function(event) {
+
+    const button = event.target.closest("#memoryNextButton");
+
+    if (!button) {
+        return;
+    }
+
+    const screen4 =
+        document.getElementById("screen4");
+
+    const screen5 =
+        document.getElementById("screen5");
+
+    if (screen4) {
+        screen4.classList.add("hidden");
+    }
+
+    if (screen5) {
+        screen5.classList.remove("hidden");
+    }
+
+    window.scrollTo(0, 0);
+
+});
+
+
+function goToScreen5() {
+
+    const screen4 =
+        document.getElementById("screen4");
+
+    const screen5 =
+        document.getElementById("screen5");
+
+    if (screen4) {
+        screen4.classList.add("hidden");
+    }
+
+    if (screen5) {
+        screen5.classList.remove("hidden");
+    }
+
+    window.scrollTo(0, 0);
+}
+
+</script>
+
+
+
+<!-- =====================================================
+     SCREEN 4 — TRIP DOWN MEMORY LANE
+===================================================== -->
+
+<div class="window hidden" id="screen4">
+
+    <div class="window-bar">
+
+        <div>
+            📸 trip down memory lane
+        </div>
+
+        <div class="dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+    </div>
+
+
+    <div class="content">
+
+        <div class="heart">
+            ♡
+        </div>
+
+        <p class="tiny">
+            SIX MONTHS OF US
+        </p>
+
+        <h1>
+            Trip Down<br>
+            <span>Memory Lane</span> ♡
+        </h1>
+
+        <p class="message">
+            Okayyy...
+            <br>
+            let's go back to the beginning.
+        </p>
+
+
+        <!-- MEMORY 1 -->
+
+        <div class="memory-card">
+
+            <p class="memory-number">
+                01 · THE BEGINNING
+            </p>
+
+            <h2>
+                So... we met on Roblox.
+            </h2>
+
+            <p>
+                Which is honestly NOT where I expected
+                to meet someone I'd end up dating...
+                but okay.
+            </p>
+
+            <p>
+                You invited me to play Dusty Road
+                and we proceeded to have absolutely
+                no idea what we were doing.
+            </p>
+
+            <ul>
+                <li>Neither of us knew what was happening.</li>
+                <li>I tried to build the car despite having approximately zero mechanical intelligence.</li>
+                <li>I asked you to run over the furry villagers. ♡</li>
+                <li>We got killed by zombies.</li>
+            </ul>
+
+            <p class="memory-caption">
+                Very romantic beginnings, obviously.
+            </p>
+
+        </div>
+
+
+        <!-- MEMORY 2 -->
+
+        <div class="memory-card">
+
+            <p class="memory-number">
+                02 · THE RECYCLING THINGY INCIDENT
+            </p>
+
+            <h2>
+                I became the passenger princess.
+            </h2>
+
+            <p>
+                We were exploring this warehouse and
+                I stood on the recycling thingy and
+                asked you to crush me.
+            </p>
+
+            <p>
+                <strong>And you obeyed.</strong>
+            </p>
+
+            <p class="memory-caption">
+                THE MAKINGS OF A GOOD BF BTW.
+            </p>
+
+            <p>
+                I was giggling and everything until...
+                well...
+            </p>
+
+            <p>
+                <strong>I actually got crushed.</strong> 😭
+            </p>
+
+        </div>
+
+
+        <!-- MEMORY 3 -->
+
+        <div class="memory-card">
+
+            <p class="memory-number">
+                03 · INK GAME
+            </p>
+
+            <h2>
+                And then I started getting whipped.
+            </h2>
+
+            <p>
+                I taught you how to play Ink Game
+                and showed you the hiding place in
+                the middle bunks during lights out.
+            </p>
+
+            <p>
+                You'd already called me <em>bbg</em>,
+                so obviously I had to flirt back.
+            </p>
+
+            <p class="quote">
+                “You come here often? ;)”
+            </p>
+
+            <p>
+                And then you actually responded:
+            </p>
+
+            <p class="quote">
+                “Yeah, a fine shyt showed me this place
+                and I've been coming ever since.
+                Don't tell her or her head would grow
+                even bigger than it already is.”
+            </p>
+
+            <p>
+                And I was immediately whipped.
+            </p>
+
+            <p class="memory-caption">
+                Like... gone. No recovery.
+            </p>
+
+        </div>
+
+
+        <!-- MEMORY 4 -->
+
+        <div class="memory-card">
+
+            <p class="memory-number">
+                04 · “I AIN'T GOING NOWHERE”
+            </p>
+
+            <h2>
+                This one made me melt.
+            </h2>
+
+            <p>
+                I stayed supporting you until the very end
+                and told you:
+            </p>
+
+            <p class="quote">
+                “I ain't going nowhere.”
+            </p>
+
+            <p>
+                And you said:
+            </p>
+
+            <p class="quote">
+                “Thank you, it makes it even more special
+                that you're here :)”
+            </p>
+
+            <p class="memory-caption">
+                Sir. You were giving me diabetes.
+            </p>
+
+        </div>
+
+
+        <!-- MEMORY 5 -->
+
+        <div class="memory-card">
+
+            <p class="memory-number">
+                05 · SOMEHOW THIS BECAME FLIRTING
+            </p>
+
+            <h2>
+                We really couldn't behave.
+            </h2>
+
+            <p>
+                There was the tug of war incident...
+            </p>
+
+            <p class="quote">
+                “We live together or we die together.”
+            </p>
+
+            <p>
+                Then we won and you went:
+            </p>
+
+            <p class="quote">
+                “That's my girl y'all.”
+            </p>
+
+            <p>
+                And somewhere between all of that,
+                you told me you'd be lucky to have me
+                as your girl.
+            </p>
+
+            <p>
+                And I eventually went:
+            </p>
+
+            <p class="memory-caption">
+                ...fine. I'll ask him out.
+            </p>
+
+        </div>
+
+
+        <!-- MEMORY 6 -->
+
+        <div class="memory-card">
+
+            <p class="memory-number">
+                06 · AND THEN...
+            </p>
+
+            <h2>
+                Somehow, it became us.
+            </h2>
+
+            <p>
+                The Roblox guy became the guy I missed
+                when he wasn't around.
+            </p>
+
+            <p>
+                The guy I stayed up for until the sun
+                was basically coming up.
+            </p>
+
+            <p>
+                The guy who's native language I'm still learning (No I will not speak it for you because no. and cause I said so.)
+            </p>
+
+            <p>
+            who made an Instagram just for me.
+
+            </p>
+
+            <p>
+                 The guy who can annoy the absolute
+                shit out of me...
+            </p>
+
+            <p>
+                ...and somehow still make me love him anyway.
+            </p>
+        </div>
+
+
+        <!-- END -->
+
+        <div class="memory-ending">
+
+            <p class="tiny">
+                SIX MONTHS LATER
+            </p>
+
+            <h2>
+                What the hell. ♡
+            </h2>
+
+            <p>
+                Look at us.
+            </p>
+
+            <p class="memory-caption">
+                From getting killed by zombies
+                to being each other's person.
+            </p>
+
+            <button class="main-button" id="memoryNextButton" onclick="goToScreen5()">
+                Continue ♡
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     SCREEN 5 — A LETTER FOR YOU
+===================================================== -->
+
+<div class="window hidden" id="screen5">
+
+    <div class="window-bar">
+
+        <div>
+            💌 a letter for you
+        </div>
+
+        <div class="dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+    </div>
+
+
+    <div class="content letter-content">
+
+        <div class="heart">
+            ♡
+        </div>
+
+        <p class="tiny">
+            UMA ÚLTIMA COISA... ♡
+        </p>
+
+        <p class="language-joke">
+            <em>Je no hablo português, but okay.</em>
+            <br>
+            <em>Je écris cette lettre en anglais. 😭</em>
+        </p>
+
+
+        <h1>
+            A letter<br>
+            <span>for you.</span>
+        </h1>
+
+
+        <div class="letter-card">
+
+            <h2>
+                Dear Jaydon,
+            </h2>
+
+
+            <p>
+                When we first met, I think loving you felt like
+                standing in the middle of an ocean.
+            </p>
+
+            <p>
+                Everything was huge... like those huge waves
+                surfers ride.
+            </p>
+
+            <p>
+                Every conversation was exciting. Every message
+                mattered. Every moment felt enormous because
+                I was still learning you, and somehow, I couldn't
+                get enough.
+            </p>
+
+            <p>
+                I think, in the beginning, I was drowning in it.
+            </p>
+
+            <p>
+                Not because it was painful.
+            </p>
+
+            <p>
+                Because there was just
+                <strong>so much of it.</strong>
+            </p>
+
+            <p>
+                So much to feel. So much to learn.
+                So much of you that I wanted to know.
+            </p>
+
+
+            <p>
+                And then, somewhere along the way,
+                the intensity calmed.
+            </p>
+
+            <p>
+                Slowly, yes, but it didn't disappear...
+            </p>
+
+            <p>
+                Why?
+            </p>
+
+            <p>
+                Because I love you the same as I always did.
+            </p>
+
+
+            <p>
+                Maybe more now...
+            </p>
+
+
+            <p>
+                Because of that laugh you give me when you've
+                successfully ragebaited me or sung one of your songs
+                <span class="aside">(MJ sang it better my love,
+                I don't make the rules)</span>
+            </p>
+
+
+            <p>
+                Do I pretend to hate it? Yes.
+            </p>
+
+            <p>
+                Do I actually hate it?
+                <strong>I invoke the 5th.</strong>
+            </p>
+
+
+            <p class="aside-big">
+                And those arms 🫠 baby those arms,
+                I'm begging you, work out please.
+            </p>
+
+
+            <p class="aside">
+                I'm getting distracted... NEVERMIND.
+            </p>
+
+
+            <p>
+                Anyways.
+            </p>
+
+
+            <p class="emphasis-paragraph">
+                The ocean didn't disappear.
+                <br>
+                I just learned how to breathe in it.
+            </p>
+
+
+            <p>
+                And now love feels different.
+            </p>
+
+
+            <p>
+                It's still your laugh making me smile like an idiot.
+                It's missing you when you're gone. It's still wanting
+                to tell you every stupid little thing that happens
+                during my day.
+            </p>
+
+
+            <p>
+                And the way you just tell me you love me,
+                like those little things like how I laugh when
+                I get shy, how apparently I stutter over my words...
+                <span class="aside">(DO I?! NO WAY)</span>
+            </p>
+
+
+            <p>
+                I think that just because we've become calmer now
+                doesn't mean that we're growing apart.
+            </p>
+
+
+            <p>
+                I feel like it made me love you deeper.
+            </p>
+
+
+            <p class="emphasis-paragraph">
+                Not a love that stopped being overwhelming.
+                <br>
+                <strong>A love I finally learned how to live inside.</strong>
+            </p>
+
+
+            <p class="emphasis-paragraph">
+                And honestly?
+                <br><br>
+                <strong>I'd still drown in you anytime. ♡</strong>
+            </p>
+
+
+            <div class="letter-divider">
+                ♡
+            </div>
+
+
+            <p>
+                <strong>Happy six months, my love.</strong>
+            </p>
+
+
+            <p>
+                Thank you for being my favourite person to annoy,
+                miss, laugh with, and love.
+            </p>
+
+
+            <p>
+                I love you, <strong>Jaydon Fisher.</strong>
+            </p>
+
+
+            <p class="final-line">
+                <strong>I'd choose you again.</strong>
+                <br>
+                And again.
+                <br>
+                And again.
+            </p>
+
+
+            <p class="signature">
+                — yours forever,Aanya ♡
+            </p>
+
+
+        </div>
+
+
+        <div class="final-love">
+            ♡ I love you. ♡
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
